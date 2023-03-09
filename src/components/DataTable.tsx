@@ -1,9 +1,23 @@
 import React, { useState } from 'react'
 import Modal from './Modal'
 import { server_calls } from '../api/server';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { useGetData } from '../custom-hooks/FetchData';
+
+const columns: GridColDef[] = [
+    { field: 'id', headerName: "ID", width: 90, hide: true },
+    { field: 'make', headerName: 'Make', flex: 1 },
+    { field: 'model', headerName: 'Model', flex: 1 },
+    { field: 'color', headerName: 'Color', flex: 1 },
+    { field: 'nickname', headerName: 'Nickname', flex: 2 },
+]
 
 function DataTable() {
-    let [ open, setOpen ] = useState(false);
+    const [ open, setOpen ] = useState(false);
+    const { contactData, getData } = useGetData();
+    // from Brandon's code that doesn't work for me:
+    // const [ selectionModel, setSelectionModel ] = useState<string[]>([])
+    const [ selectionModel, setSelectionModel ] = useState<any>([])
 
     const handleOpen = () => {
         setOpen(true)
@@ -13,9 +27,11 @@ function DataTable() {
         setOpen(false)
     }
 
-    const getData = async () => {
-        const result = await server_calls.get();
-        console.log(server_calls.get())
+    const deleteData = () => {
+        server_calls.delete(selectionModel[0]);
+        getData();
+        console.log(`Selection model: ${selectionModel}`),
+        setTimeout(() => {window.location.reload()}, 1000);
     }
 
     return (
@@ -23,6 +39,9 @@ function DataTable() {
 
         {/* 1. Modal (popup) */}
             <Modal 
+                // From Brandon's video that doesn't work for me:
+                // id={selectionModel[0]}
+                id={selectionModel}
                 open={open} 
                 onClose={handleClose}       
             />
@@ -38,11 +57,13 @@ function DataTable() {
                     </button>
                     <button
                         className='p-3 bg-slate-300 m-3 rounded hover:bg-slate-800 hover:text-white'
+                        onClick={handleOpen}
                     >
                         Update Car Info
                     </button>
                     <button
                         className='p-3 bg-slate-300 m-3 rounded hover:bg-slate-800 hover:text-white'
+                        onClick={deleteData}
                     >
                         Delete Car Info
                     </button>
@@ -50,8 +71,17 @@ function DataTable() {
             </div>
 
         {/* 3. Data Table section */}
-        <button onClick={getData}>get data</button>
-        </>
+        <div className={ open ? "hidden" : "container mx-10 my-5 flex flex-col"}
+        style={{ height: 400, width: '100%'}}
+        >
+            <h2 className="p-3 bg-slate-300 my-2 rounded">My Cars</h2>
+            <DataGrid rows={contactData} columns={columns} rowsPerPageOptions={[5]}
+            checkboxSelection={true} 
+            onSelectionModelChange={ (item:any) => {
+                setSelectionModel(item)
+            }}/>
+        </div>
+    </>
   )
 }
 

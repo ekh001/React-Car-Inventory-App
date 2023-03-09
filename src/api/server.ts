@@ -1,11 +1,11 @@
-let token = '35e97bd9b545da177344f1489565a2cd3a8ea22e35006645'
+let token = '8fe08d6495c1b6753d1a0ca3048d59905dd1246441dd9fab'
 
 export const server_calls = {
     get: async () => {
-        const response = await fetch(`https://able-believed-boar.glitch.me/cars`,{
+        const response = await fetch(`https://able-believed-boar.glitch.me/api/cars`,{
             method: 'GET',
             // mode: "cors" (updated method from new video, doesn't use token)
-            headers: {
+            headers: {              
                 'Content-Type': 'application/json',
                 'x-access-token': `Bearer ${token}`
             }
@@ -19,7 +19,7 @@ export const server_calls = {
     },
 // The commas are important because create, update, get, and delete are all actually key/value pairs (objects in objects in objects)
     create: async(data: any = {}) => {
-        const response = await fetch(`https://able-believed-boar.glitch.me/cars`,{
+        const response = await fetch(`https://able-believed-boar.glitch.me/api/cars`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export const server_calls = {
     },
 
     update: async(id: string, data: any = {}) => {
-        const response = await fetch(`https://able-believed-boar.glitch.me/cars/${id}`,{
+        const response = await fetch(`https://able-believed-boar.glitch.me//api/cars/${id}`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ export const server_calls = {
         });
     },
     delete: async(id: string) => {
-        const response = await fetch(`https://able-believed-boar.glitch.me/cars/${id}`,{
+        const response = await fetch(`https://able-believed-boar.glitch.me/api/cars/${id}`,{
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

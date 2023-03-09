@@ -3,6 +3,7 @@ import ContactForm from './ContactForm';
 
 // Note to self: type and interface are very similar; their differences lie in theoreticals that I don't need to worry about yet
 type Props = {
+    id?: string;
     open: boolean;
     onClose: () => void;
 }
@@ -30,7 +31,7 @@ const Modal = ( props: Props ) => {
                             </p>
                         </div>
                         <div className="flex flex-col items-center text-center mt-3 p-2">
-                            <ContactForm />
+                            <ContactForm id={ props.id }/>
                         </div>
                     </div>
                 </div>
