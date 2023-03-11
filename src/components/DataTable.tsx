@@ -15,9 +15,8 @@ const columns: GridColDef[] = [
 function DataTable() {
     const [ open, setOpen ] = useState(false);
     const { contactData, getData } = useGetData();
-    // from Brandon's code that doesn't work for me:
-    // const [ selectionModel, setSelectionModel ] = useState<string[]>([])
-    const [ selectionModel, setSelectionModel ] = useState<any>([])
+    const [ selectionModel, setSelectionModel ] = useState<string[]>([])
+    // const [ selectionModel, setSelectionModel ] = useState<any>([])
 
     const handleOpen = () => {
         setOpen(true)
@@ -39,47 +38,45 @@ function DataTable() {
 
         {/* 1. Modal (popup) */}
             <Modal 
-                // From Brandon's video that doesn't work for me:
-                // id={selectionModel[0]}
                 id={selectionModel}
                 open={open} 
                 onClose={handleClose}       
             />
 
-            {/*2.  Buttons */}
-            <div className='flex flex-row'>
-                <div>
-                    <button
-                        className='p-3 bg-slate-300 m-3 rounded hover:bg-slate-800 hover:text-white'
-                        onClick={() => handleOpen()}
-                    >
-                        Enter New Car
-                    </button>
-                    <button
-                        className='p-3 bg-slate-300 m-3 rounded hover:bg-slate-800 hover:text-white'
-                        onClick={handleOpen}
-                    >
-                        Update Car Info
-                    </button>
-                    <button
-                        className='p-3 bg-slate-300 m-3 rounded hover:bg-slate-800 hover:text-white'
-                        onClick={deleteData}
-                    >
-                        Delete Car Info
-                    </button>
-                </div>
-            </div>
-
-        {/* 3. Data Table section */}
+        {/* 2. Data Table section */}
         <div className={ open ? "hidden" : "container mx-10 my-5 flex flex-col"}
         style={{ height: 400, width: '100%'}}
         >
-            <h2 className="p-3 bg-slate-300 my-2 rounded">My Cars</h2>
+            <h2 className="p-3 bg-emerald-300 font-mono text-center text-xl my-2 rounded">My Cars</h2>
             <DataGrid rows={contactData} columns={columns} rowsPerPageOptions={[5]}
             checkboxSelection={true} 
             onSelectionModelChange={ (item:any) => {
                 setSelectionModel(item)
             }}/>
+        </div>
+
+        {/*2.  Buttons */}
+        <div className='flex flex-row justify-center'>
+            <div>
+                <button
+                    className='p-3 bg-emerald-300 m-3 rounded hover:bg-slate-800 hover:text-white'
+                    onClick={() => handleOpen()}
+                >
+                    Enter New Car
+                </button>
+                <button
+                    className='p-3 bg-emerald-300 m-3 rounded hover:bg-slate-800 hover:text-white'
+                    onClick={handleOpen}
+                >
+                    Update Car Info
+                </button>
+                <button
+                    className='p-3 bg-emerald-300 m-3 rounded hover:bg-slate-800 hover:text-white'
+                    onClick={deleteData}
+                >
+                    Delete Car Info
+                </button>
+            </div>
         </div>
     </>
   )

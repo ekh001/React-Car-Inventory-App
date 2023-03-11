@@ -9,10 +9,7 @@ import { chooseMake, chooseModel, chooseColor, chooseNickname } from '../redux/s
 
 // interface
 interface ContactFormProps {
-  // THIS IS THE CHANGE THAT BREAKS MODAL.TSX:
-  // id?: string[],
-  id?: string,
-  // data?: {}
+  id?: string[],
 }
 
 const ContactForm = (props:ContactFormProps) => {

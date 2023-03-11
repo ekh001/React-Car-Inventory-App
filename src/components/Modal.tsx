@@ -3,7 +3,7 @@ import ContactForm from './ContactForm';
 
 // Note to self: type and interface are very similar; their differences lie in theoreticals that I don't need to worry about yet
 type Props = {
-    id?: string;
+    id?: string[];
     open: boolean;
     onClose: () => void;
 }
