@@ -31,9 +31,9 @@ function Navbar() {
     }
     
     return (
-        <nav className='flex items-center justify-between flex-wrap bg-gradient-to-b from-emerald-600 to-green-500 p-6'>
+        <nav className='flex items-center justify-between flex-wrap bg-black p-5'>
             <div className='flex items-center flex-shrink-0 text-white mr-6'>
-                <Link to='/' className='font-semibold text-xl tracking-tight'>Hubcaps</Link>
+                <Link to='/' className='font-semibold text-xl tracking-tight'>Home</Link>
             </div>
             {/* <div className="block"> */}
                 <button
@@ -45,18 +45,18 @@ function Navbar() {
                 { isVisible ? ( 
                     <div className='w-full flex'>
                         <div className='text-sm flex-grow'>
-                            <Button className="p-3 m-5 bg-emerald-300 justify-center rounded-full">
+                            <Button className="p-3 m-5 bg-green-500 justify-center rounded-full">
                                 <div>
                                     <Link to='/' onClick={ clicked } className="flex-items-center mt-4 lg:inline-block lg:mt-0
-                                    text-emerald-600 hover:text-white mr-4 ml-4">
+                                    text-green-100 hover:text-black mr-4 ml-4">
                                         Home
                                     </Link>
                                 </div>
                             </Button>
-                            <Button className="p-3 m-5 bg-emerald-300 justify-center rounded-full">
+                            <Button className="p-3 m-5 bg-green-500 justify-center rounded-full">
                                 <div>
                                     <Link to='/about' onClick={ clicked } className="flex-items-center mt-4 lg:inline-block lg:mt-0
-                                    text-emerald-600 hover:text-white mr-4 ml-4">
+                                    text-green-100 hover:text-black mr-4 ml-4">
                                         About
                                     </Link>
                                 </div>
@@ -66,10 +66,10 @@ function Navbar() {
                                 !auth.currentUser ?
                                 <>
 
-                                <Button className="p-3 m-5 bg-emerald-300 justify-center rounded-full">
+                                <Button className="p-3 m-5 bg-green-500 justify-center rounded-full">
                                     <div>
                                         <Link to="/" onClick={ () => { signInOnClick()}} className="flex-items-center mt-4 lg:inline-block lg:mt-0
-                                    text-emerald-600 hover:text-white mr-4 ml-4">
+                                    text-green-100 hover:text-black mr-4 ml-4">
                                             Login
                                         </Link>
                                     </div>
@@ -77,20 +77,20 @@ function Navbar() {
                                 </>
                                 :
                                 <>
-                                <Button className="p-3 m-5 bg-emerald-300 justify-center rounded-full">
+                                <Button className="p-3 m-5 bg-green-500 justify-center rounded-full">
                                 <div>
                                     <Link to='/dashboard' onClick={ clicked } className="flex-items-center mt-4 lg:inline-block lg:mt-0
-                                    text-emerald-600 hover:text-white mr-4 ml-4">
+                                    text-green-100 hover:text-black mr-4 ml-4">
                                         Dashboard
                                     </Link>
                                 </div>
                                 </Button>
                                 
 
-                                <Button className="p-3 m-5 bg-emerald-300 justify-center rounded-full">
+                                <Button className="p-3 m-5 bg-green-500 justify-center rounded-full">
                                     <div>
                                         <Link to="/" onClick={ () => { signOutOnClick()}} className="flex-items-center mt-4 lg:inline-block lg:mt-0
-                                    text-emerald-600 hover:text-white mr-4 ml-4">
+                                    text-green-100 hover:text-black mr-4 ml-4">
                                             Logout
                                         </Link>
                                     </div>

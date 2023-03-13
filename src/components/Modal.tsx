@@ -1,5 +1,5 @@
 import React from 'react'
-import ContactForm from './ContactForm';
+import CarForm from './CarForm';
 
 // Note to self: type and interface are very similar; their differences lie in theoreticals that I don't need to worry about yet
 type Props = {
@@ -31,7 +31,7 @@ const Modal = ( props: Props ) => {
                             </p>
                         </div>
                         <div className="flex flex-col items-center text-center mt-3 p-2">
-                            <ContactForm id={ props.id }/>
+                            <CarForm id={ props.id }/>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@ interface ContactFormProps {
   id?: string[],
 }
 
-const ContactForm = (props:ContactFormProps) => {
+const CarForm = (props:ContactFormProps) => {
   const { register, handleSubmit } = useForm({})
   const dispatch = useDispatch();
   const store = useStore();
@@ -67,5 +67,5 @@ const ContactForm = (props:ContactFormProps) => {
   )
 }
 
-export default ContactForm
+export default CarForm
 

@@ -3,6 +3,7 @@ import Modal from './Modal'
 import { server_calls } from '../api/server';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useGetData } from '../custom-hooks/FetchData';
+import dataTableBackground from '../assets/images/datatable-bg2.svg'
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: "ID", width: 90, hide: true },
@@ -16,7 +17,6 @@ function DataTable() {
     const [ open, setOpen ] = useState(false);
     const { contactData, getData } = useGetData();
     const [ selectionModel, setSelectionModel ] = useState<string[]>([])
-    // const [ selectionModel, setSelectionModel ] = useState<any>([])
 
     const handleOpen = () => {
         setOpen(true)
@@ -35,6 +35,12 @@ function DataTable() {
 
     return (
         <>
+            <div 
+            style={{ backgroundImage: `url(${ dataTableBackground })`}}
+            className="flex-row justify-center mx-auto bg-cover bg-fixed h-screen"
+            >
+
+
 
         {/* 1. Modal (popup) */}
             <Modal 
@@ -44,10 +50,10 @@ function DataTable() {
             />
 
         {/* 2. Data Table section */}
-        <div className={ open ? "hidden" : "container mx-10 my-5 flex flex-col"}
-        style={{ height: 400, width: '100%'}}
+        <div className={ open ? "hidden" : "container mx-10 my-10 flex flex-col drop-shadow-md"}
+        style={{ height: 400, width: 'auto'}}
         >
-            <h2 className="p-3 bg-emerald-300 font-mono text-center text-xl my-2 rounded">My Cars</h2>
+            <h1 className="p-3 bg-black text-white font-mono text-center text-xl my-2 rounded">Virtual Garage of Excellence</h1>
             <DataGrid rows={contactData} columns={columns} rowsPerPageOptions={[5]}
             checkboxSelection={true} 
             onSelectionModelChange={ (item:any) => {
@@ -59,25 +65,27 @@ function DataTable() {
         <div className='flex flex-row justify-center'>
             <div>
                 <button
-                    className='p-3 bg-emerald-300 m-3 rounded hover:bg-slate-800 hover:text-white'
+                    className='p-3 bg-green-200 rounded border-2 border-black drop-shadow-md hover:bg-green-500 hover:text-white'
                     onClick={() => handleOpen()}
                 >
                     Enter New Car
                 </button>
                 <button
-                    className='p-3 bg-emerald-300 m-3 rounded hover:bg-slate-800 hover:text-white'
+                    className='p-3 bg-green-200 m-3 rounded border-2 border-black drop-shadow-md hover:bg-green-500 hover:text-white'
                     onClick={handleOpen}
                 >
                     Update Car Info
                 </button>
                 <button
-                    className='p-3 bg-emerald-300 m-3 rounded hover:bg-slate-800 hover:text-white'
+                    className='p-3 bg-green-200 m-3 rounded border-2 border-black drop-shadow-md hover:bg-green-500 hover:text-white'
                     onClick={deleteData}
                 >
                     Delete Car Info
                 </button>
             </div>
         </div>
+        </div>
+
     </>
   )
 }

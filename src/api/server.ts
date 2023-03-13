@@ -4,7 +4,6 @@ export const server_calls = {
     get: async () => {
         const response = await fetch(`https://able-believed-boar.glitch.me/api/cars`,{
             method: 'GET',
-            // mode: "cors" (updated method from new video, doesn't use token)
             headers: {              
                 'Content-Type': 'application/json',
                 'x-access-token': `Bearer ${token}`
@@ -29,6 +28,7 @@ export const server_calls = {
             body: JSON.stringify(data)
         });
         if (!response.ok){
+            console.log('Fail, girl')
             throw new Error('Failed to create new data on the server')
         }
 
