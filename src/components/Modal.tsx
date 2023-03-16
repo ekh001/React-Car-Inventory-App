@@ -1,4 +1,3 @@
-import React from 'react'
 import CarForm from './CarForm';
 
 // Note to self: type and interface are very similar; their differences lie in theoreticals that I don't need to worry about yet
@@ -17,20 +16,20 @@ const Modal = ( props: Props ) => {
             bg-gray-300 bg-opacity-25"
             >
                 <div 
-                    className='max-w-600px w-2/5 fixed flex z-1 mt-20 bg-white shadow-xl rounded'
+                    className='max-w-600px w-3/5 h-3/5 fixed flex z-1 mt-20 bg-white shadow-xl rounded'
                     onClick={(e) => {
                         e.stopPropagation()
                     }}
                 >
                     <div className="w-full flex flex-col">
-                        <div className="flex flex-row space-apart">
+                        <div className="flex flex-row space-apart justify-end">
                             <p 
-                                className="flex justify-start m-3 bg-slate-300 p-2 rounded hover:bg-slate-800 text-white"
+                                className="flex justify-center m-3 bg-slate-300 p-2 rounded hover:bg-slate-800 text-white"
                                 onClick={props.onClose}>
-                                    X
+                                    <i className="fa-solid fa-arrow-right-from-bracket"></i>
                             </p>
                         </div>
-                        <div className="flex flex-col items-center text-center mt-3 p-2">
+                        <div className="flex flex-col items-center text-center mt-3 p-1 overflow-auto">
                             <CarForm id={ props.id }/>
                         </div>
                     </div>

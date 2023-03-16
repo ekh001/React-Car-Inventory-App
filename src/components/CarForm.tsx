@@ -21,10 +21,18 @@ const CarForm = (props:ContactFormProps) => {
     console.log(`ID: ${props.id}`);
     if (props.id && props.id.length > 0) {
       server_calls.update(props.id[0], data)
+      console.log(data.make)
+      console.log(data.model)
+      console.log(data.color)
+      console.log(data.nickname)
       console.log(`Updated info: ${ data } ${ props.id }`)
       setTimeout(() => {window.location.reload()}, 1000);
       event.target.reset()
     } else {
+      console.log(data.make)
+      console.log(data.model)
+      console.log(data.color)
+      console.log(data.nickname)
       // Uses dispatch to update the state in our store
       dispatch(chooseMake(data.make));
       dispatch(chooseModel(data.model));
@@ -55,9 +63,9 @@ const CarForm = (props:ContactFormProps) => {
           <label htmlFor='nickname'>Car Nickname</label>
           <Input {...register('nickname')} name='nickname' placeholder='Nickname'/>
         </div>
-        <div className="flex p-1">
+        <div className="flex p-1 justify-center">
           <Button
-            className='flex justify-center m-3 bg-slate-300 p-2 rounded hover:bg-slate-800 text-white'
+            className='p-2 bg-green-200 m-3 rounded border-2 border-black drop-shadow-md font-mono hover:bg-green-500 hover:text-white transition ease-linear duration-200'
             >
               Submit
             </Button>
