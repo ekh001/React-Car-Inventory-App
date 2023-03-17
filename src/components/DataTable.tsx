@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import Modal from './Modal'
+import Modal_ from './Modal'
 import { server_calls } from '../api/server';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useGetData } from '../custom-hooks/FetchData';
-// import Stack from '@mui/material/Stack';
-// import Alert from '@mui/material/Alert';
-// import Button from '@mui/material/Button';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
 import dataTableBackground from '../assets/images/datatable-bg2.svg'
 
 const columns: GridColDef[] = [
@@ -40,10 +42,23 @@ function DataTable() {
 
     const dropDown = () => {
         if (!isVisible) {
-          alert("Welcome to the garage!");
+          toast.success("Welcome to the garage, where the rules are there are no rules.", {
+            position: toast.POSITION.BOTTOM_CENTER,
+            autoClose: 1500, 
+            hideProgressBar: true,
+            closeOnClick: true, 
+            pauseOnHover: true,
+            style: {
+                fontSize: "24px",
+                textAlign: "center",
+                margin: "0 auto",
+                color: "green",
+                border: "4px solid green"                
+              } 
+          });
         }
         setIsVisible(!isVisible);
-      }     
+      }  
 
     return (
         <>
@@ -55,7 +70,7 @@ function DataTable() {
 
 
         {/* 1. Modal (popup) */}
-            <Modal 
+            <Modal_ 
                 id={selectionModel}
                 open={open} 
                 onClose={handleClose}       
@@ -65,21 +80,25 @@ function DataTable() {
         <div className={ open ? "hidden" : "container mx-10 my-10 flex flex-col drop-shadow-md"}
         style={{ height: 400, width: 'auto'}}
         >
-            <button onClick={dropDown} className="p-3 bg-black drop-shadow-md text-white font-mono text-center text-xl my-2 rounded
-             hover:bg-green-500 hover:border-black transition ease-linear duration-400"
+            <button onClick={dropDown} className="p-3 drop-shadow-md text-white font-mono text-center text-xl my-2 rounded
+             hover:bg-green-500 transition ease-linear duration-400"
              >
-                <h3 className="p-5 bg-white bg-opacity-80 text-emerald-600 text-4xl text-center font-mono font-extrabold rounded">
+                <h3 className="p-3 bg-white bg-opacity-80 text-green-600 text-4xl text-center font-mono font-extrabold rounded">
                     Virtual Garage of Excellence
                 </h3>
             </button>
             { isVisible ? (
-            <DataGrid className={`bg-slate-50 ${
-                isVisible ? "visible opacity-100" : "invisible opacity-0"
-              } transition-opacity duration-1000`} rows={contactData} columns={columns} rowsPerPageOptions={[5]}
-            checkboxSelection={true} 
-            onSelectionModelChange={ (item:any) => {
-                setSelectionModel(item)
-            }}/>
+                <div style={{ height: '500px' }}>
+                    <ToastContainer />
+                    <DataGrid className={`bg-slate-50 ${
+                        isVisible ? "visible opacity-100" : "invisible opacity-0"
+                    } transition-opacity duration-1000`} rows={contactData} columns={columns} rowsPerPageOptions={[5]}
+                    checkboxSelection={true} 
+                    onSelectionModelChange={ (item:any) => {
+                        setSelectionModel(item)
+                    }}/> 
+                </div>  
+            
             )
             :
             ( 

@@ -7,7 +7,7 @@ type Props = {
     onClose: () => void;
 }
 
-const Modal = ( props: Props ) => {
+const Modal_ = ( props: Props ) => {
     if ( !props.open ) return (<></>);
     return (
         <div 
@@ -38,4 +38,4 @@ const Modal = ( props: Props ) => {
     )
 }
 
-export default Modal
+export default Modal_

@@ -20,7 +20,7 @@ function About() {
         <h2 className="p-5 bg-white bg-opacity-80 text-emerald-600 text-xl text-center">
           So how does this work? 
           <ul>
-            Well, hop on over to that nav button and login
+            Well, hop on over to that nav button and log in
             with Google. 
           </ul>
           <ul>

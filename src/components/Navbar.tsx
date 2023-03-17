@@ -43,8 +43,9 @@ function Navbar() {
                         <i className="fa-solid fa-bars"></i>
                 </button>
                 { isVisible ? ( 
-                    <div className={`w-full flex`}>
-                        <div className='text-sm flex-grow'>
+                    <div style={{ transition: 'all 5s' }} className={`w-full flex text-center transition-all ease-out duration-5000`}>
+                        <div className='text-sm flex-grow'
+                            >
                             <Button className="p-3 m-5 bg-green-500 border-green-300 border-2 justify-center rounded-full
                             text-white hover:text-black hover:bg-green-600 transition ease-linear duration-200">
                                 <div>
